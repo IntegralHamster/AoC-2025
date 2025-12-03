@@ -9,7 +9,6 @@ def joltage1(batteries):
     else:
         return 10*maximum + max(batteries[batteries.index(maximum) + 1:])
  
-
 def joltage2(batteries, ans_length):
   
   if ans_length == 0:
