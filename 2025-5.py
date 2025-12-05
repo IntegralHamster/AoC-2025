@@ -22,32 +22,7 @@ for test in ingridients:
       break
 print(freshness)
 
-supremely_fresh = [fresh_ranges[0]]
-
-for test_fresh in fresh_ranges[1:]:
-  change_flag = 0
-  for existing_fresh in supremely_fresh:
-    if (test_fresh[1] < existing_fresh[0]) or (test_fresh[0] > existing_fresh[1]):
-      continue
-    elif test_fresh[0] < existing_fresh[0] <= test_fresh[1] <= existing_fresh[1]:
-      change_flag = 1
-      existing_fresh[0] = test_fresh[0]
-      break
-    elif test_fresh[0] < existing_fresh[0] <= existing_fresh[1] < test_fresh[1]:
-      existing_fresh[0] = test_fresh[0]
-      existing_fresh[1] = test_fresh[1]
-      change_flag = 1
-      break      
-    elif existing_fresh[0] <= test_fresh[0] <= test_fresh[1] <= existing_fresh[1]:
-      change_flag = 1
-      break
-    elif existing_fresh[0] <= test_fresh[0] <= existing_fresh[1] < test_fresh[1]:
-      change_flag = 1
-      existing_fresh[1] = test_fresh[1]
-      break
-  if change_flag == 0:
-    supremely_fresh.append(test_fresh)
-    
+supremely_fresh = copy.deepcopy(fresh_ranges)
 while True:
   previous_step = copy.deepcopy(supremely_fresh)
   for test_fresh in supremely_fresh:
@@ -81,4 +56,3 @@ for test_fresh in supremely_fresh:
   freshness_overload += test_fresh[1] - test_fresh[0] + 1
   
 print(freshness_overload)
-    
