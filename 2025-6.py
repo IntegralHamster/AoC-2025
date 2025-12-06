@@ -1,5 +1,3 @@
-import copy
-
 with open('input.txt') as f:
     lines = [line for line in f.readlines()]
 
