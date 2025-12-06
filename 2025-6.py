@@ -29,31 +29,29 @@ for i in range(len(lines[0])):
   lines_updated2.append(vertical.replace(' ', ''))
   
 total_p2 = 0  
-j = 0
+j = -1
 for i in range(len(lines_updated[0])):
   if lines_updated[-1][i] == '+':
     horizontal_total = 0
     while True:
+      j += 1
       if j == len(lines_updated2):
         break
       elif lines_updated2[j] == '':
-        j += 1
         break
       else:
         horizontal_total += int(lines_updated2[j])
-        j += 1
         
   elif lines_updated[-1][i] == '*':
     horizontal_total = 1
     while True:
+      j += 1
       if j == len(lines_updated2):
         break
       elif lines_updated2[j] == '':
-        j += 1
         break
       else:
         horizontal_total *= int(lines_updated2[j])
-        j += 1
   total_p2 += horizontal_total
   
 print(total_p1, total_p2)
